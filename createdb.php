@@ -32,7 +32,7 @@ $dbConnected = new mysqli($hostname, $username, $password, $dbName);
     $create_table .= "MPN VARCHAR( 50 ) NOT NULL, ";
     $create_table .= "Price VARCHAR( 10 ) NOT NULL";
     $create_table .= ") ";
-    mysql_query($create_table);
+    $dbConnected->query($create_table);
   // }
 // }
 
