@@ -5,10 +5,10 @@ $info = $_POST['data'];
 
 //connect to MySQL database
 $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-$hostname = "localhost";
-$username = "root";
-$password = "";
-$dbName = "amazon";
+$hostname = $url["host"];
+$username = $url["user"];
+$password = $url["pass"];
+$dbName = substr($url["path"], 1);
 
 $dbConnected = new mysqli($hostname, $username, $password, $dbName);
 
@@ -22,7 +22,7 @@ $dbConnected = new mysqli($hostname, $username, $password, $dbName);
 // if ($dbSuccess){
 
   //select database
-  $dbSelected = mysqli_select_db($dbName, $dbConnected);
+  // $dbSelected = mysqli_select_db($dbName, $dbConnected);
 
   //add data to the database
   $add_data = 'INSERT INTO '.$dbName.'.collection ( ';

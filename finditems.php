@@ -7,24 +7,25 @@ $keywords = $_POST['data'];
 header("content-type:application/json");
 
 //connect to MySQL database
-$hostname = "localhost";
-$username = "root";
-$password = "";
-$dbName = "amazon";
+$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+$hostname = $url["host"];
+$username = $url["user"];
+$password = $url["pass"];
+$dbName = substr($url["path"], 1);
 
-$dbConnected = mysql_connect($hostname, $username, $password);
+$dbConnected = new mysqli($hostname, $username, $password, $dbName);
 
-$dbSuccess = true;
-if (!$dbConnected) {
-  echo "MySQL connection FAILED<br /><br />";
-  $dbSuccess = false;
-}
+// $dbSuccess = true;
+// if (!$dbConnected) {
+//   echo "MySQL connection FAILED<br /><br />";
+//   $dbSuccess = false;
+// }
 
 //if connected to database
-if ($dbSuccess){
+// if ($dbSuccess){
 
   //select database
-  $dbSelected = mysql_select_db($dbName, $dbConnected);
+  // $dbSelected = mysql_select_db($dbName, $dbConnected);
 
   //connect to Amazon and get data
     // Your AWS Access Key ID, as taken from the AWS Your Account page
@@ -105,6 +106,6 @@ if ($dbSuccess){
   //convert to json
   $arr = array('ASIN' => $asin, 'Title' => $title, 'MPN' => $mpn, 'Price' => $price);
   echo (json_encode($arr));
-}
+// }
 
 ?>

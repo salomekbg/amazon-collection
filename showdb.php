@@ -1,23 +1,22 @@
 <?php
 
 //connect to MySQL database
-$hostname = "localhost";
-$username = "root";
-$password = "";
-$dbName = "amazon";
+$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+$hostname = $url["host"];
+$username = $url["user"];
+$password = $url["pass"];
+$dbName = substr($url["path"], 1);
 
 $dbConnected = new mysqli($hostname, $username, $password, $dbName);
 
-$dbSuccess = true;
-if (!$dbConnected) {
-  echo "MySQL connection FAILED<br /><br />";
-  $dbSuccess = false;
-}
+// $dbSuccess = true;
+// if (!$dbConnected) {
+//   echo "MySQL connection FAILED<br /><br />";
+//   $dbSuccess = false;
+// }
 
 //if connected to database
-if ($dbSuccess){
-
-
+// if ($dbSuccess){
 
   //select all data from the database
   $sql = "SELECT * FROM collection";
@@ -43,6 +42,6 @@ if ($dbSuccess){
     }
     echo "</table>";
   }
-}
+// }
 
 ?>

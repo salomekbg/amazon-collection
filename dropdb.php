@@ -1,29 +1,30 @@
 <?php
 
 //connect to MySQL database
-$hostname = "localhost";
-$username = "root";
-$password = "";
-$dbName = "amazon";
+$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+$hostname = $url["host"];
+$username = $url["user"];
+$password = $url["pass"];
+$dbName = substr($url["path"], 1);
 
-$dbConnected = mysql_connect($hostname, $username, $password);
-$dbSelected = mysql_select_db($dbName, $dbConnected);
+$dbConnected = new mysqli($hostname, $username, $password, $dbName);
+// $dbSelected = mysql_select_db($dbName, $dbConnected);
 
-$dbSuccess = true;
-if ($dbConnected) {
-  if (!$dbSelected) {
-    echo "DB connection FAILED<br /><br />";
-    $dbSuccess = false;
-  }
-} else {
-  echo "MySQL connection FAILED<br /><br />";
-  $dbSuccess = false;
-}
+// $dbSuccess = true;
+// if ($dbConnected) {
+//   if (!$dbSelected) {
+//     echo "DB connection FAILED<br /><br />";
+//     $dbSuccess = false;
+//   }
+// } else {
+//   echo "MySQL connection FAILED<br /><br />";
+//   $dbSuccess = false;
+// }
 
 //drop database if successfully connected to database
-if ($dbSuccess){
-  $drop_db = "DROP DATABASE IF EXISTS ".$dbName;
-  mysql_query($drop_db);
-}
+// if ($dbSuccess){
+  $drop_db = "DROP TABLE collection IF EXISTS ".$dbName;
+  $dbConnected->query($drop_db);
+// }
 
 ?>

@@ -12,6 +12,7 @@ $username = $url["user"];
 $password = $url["pass"];
 $dbName = substr($url["path"], 1);
 
+// $dbConnected = mysql_connect($hostname, $username, $password, $dbName);
 $dbConnected = new mysqli($hostname, $username, $password, $dbName);
 
 // $dbSuccess = true;
