@@ -23,7 +23,7 @@ $dbConnected = new mysqli($hostname, $username, $password, $dbName);
 
 //drop database if successfully connected to database
 // if ($dbSuccess){
-  $drop_db = "DROP TABLE collection IF EXISTS ".$dbName;
+  $drop_db = "DROP TABLE collection";
   $dbConnected->query($drop_db);
 // }
 
