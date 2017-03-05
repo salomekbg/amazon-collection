@@ -4,24 +4,25 @@
 $info = $_POST['data'];
 
 //connect to MySQL database
+$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 $hostname = "localhost";
 $username = "root";
 $password = "";
 $dbName = "amazon";
 
-$dbConnected = mysql_connect($hostname, $username, $password);
+$dbConnected = new mysqli($hostname, $username, $password, $dbName);
 
-$dbSuccess = true;
-if (!$dbConnected) {
-  echo "MySQL connection FAILED<br /><br />";
-  $dbSuccess = false;
-}
+// $dbSuccess = true;
+// if (!$dbConnected) {
+//   echo "MySQL connection FAILED<br /><br />";
+//   $dbSuccess = false;
+// }
 
 //if connected to database
-if ($dbSuccess){
+// if ($dbSuccess){
 
   //select database
-  $dbSelected = mysql_select_db($dbName, $dbConnected);
+  $dbSelected = mysqli_select_db($dbName, $dbConnected);
 
   //add data to the database
   $add_data = 'INSERT INTO '.$dbName.'.collection ( ';
@@ -37,7 +38,7 @@ if ($dbSuccess){
   $add_data .= ""."'".$info['mpn']."', ";
   $add_data .= ""."'".$info['price']."' ";
   $add_data .= ') ';
-  mysql_query($add_data);
-}
+  $dbConnected->query($add_data);
+// }
 
 ?>
