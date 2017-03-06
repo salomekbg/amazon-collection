@@ -99,3 +99,5 @@ h5 {
 #empty-button {
   float: right;
 }
+
+tr:hover { background: #CCC; }
