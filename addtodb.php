@@ -22,7 +22,7 @@ $add_data .= ') ';
 
 $add_data .= 'VALUES ( ';
 $add_data .= ""."'".$info['asin']."', ";
-$add_data .= ""."'".$info['title']."', ";
+$add_data .= ""."'".htmlspecialchars($info['title'], ENT_QUOTES)."', ";
 $add_data .= ""."'".$info['mpn']."', ";
 $add_data .= ""."'".$info['price']."' ";
 $add_data .= ') ';
