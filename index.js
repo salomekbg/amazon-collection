@@ -24,7 +24,7 @@ function findItems(asin){
     url: '/finditems.php',
     data: {data: asin}
   }).done(function(result){
-    $('.result')[0].innerHTML = `<br /><br /><br/ >`
+    $('.result')[0].innerHTML = `<br />`
     $('.result').append(`<table><h4><tr><td><h4>ASIN:</h4></td><td><h4>${result["ASIN"]}</h4></td></tr><tr><td><h4>Title:</h4></td><td><h4>${result["Title"]}</h4></td></tr><tr><td><h4>MPN:</h4></td><td><h4>${result["MPN"]}</h4></td></tr><tr><td><h4>Price:</h4></td><td><h4>${result["Price"]}</h4></td></tr></table>`)
     $('#add-button').show()
   })
