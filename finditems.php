@@ -88,8 +88,12 @@ $array = json_decode($json,TRUE);
 //drill down through array to get the item
   $asin = $array["Items"]["Item"]["ASIN"];
   $title = $array["Items"]["Item"]["ItemAttributes"]["Title"];
-  $mpn = $array["Items"]["Item"]["ItemAttributes"]["MPN"];
-  $price = $array["Items"]["Item"]["ItemAttributes"]["ListPrice"]["FormattedPrice"];
+  if (array_key_exists("MPN", $array["Items"]["Item"]["ItemAttributes"])) {
+    $mpn = $array["Items"]["Item"]["ItemAttributes"]["MPN"];
+  } else {
+    $mpn = "No MPN found!";
+  }
+    $price = $array["Items"]["Item"]["ItemAttributes"]["ListPrice"]["FormattedPrice"];
 
 //convert to json
 $arr = array('ASIN' => $asin, 'Title' => $title, 'MPN' => $mpn, 'Price' => $price);
