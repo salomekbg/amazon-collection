@@ -93,8 +93,12 @@ $array = json_decode($json,TRUE);
   } else {
     $mpn = "No MPN found!";
   }
+  if (array_key_exists("ListPrice", $array["Items"]["Item"]["ItemAttributes"])) {
     $price = $array["Items"]["Item"]["ItemAttributes"]["ListPrice"]["FormattedPrice"];
-
+  } else {
+    $price = "No Price found, try checking Amazon directly.";
+  }
+  
 //convert to json
 $arr = array('ASIN' => $asin, 'Title' => $title, 'MPN' => $mpn, 'Price' => $price);
 echo (json_encode($arr));
