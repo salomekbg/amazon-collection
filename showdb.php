@@ -14,7 +14,7 @@ $sql = "SELECT * FROM collection";
 $result = $dbConnected->query($sql);
 
 //send back a table
-echo "<table id='db' style='width: 100%; padding-left: 5px;'>
+echo "<table style='width: 100%; padding-left: 5px;'>
 <tr>
   <th style='padding: 5px;'>ASIN</th>
   <th style='padding: 5px;'>Title</th>

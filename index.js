@@ -2,6 +2,11 @@ $(document).ready(function() {
   createDB()
   showItems()
 
+  $('#empty-button').click(function(event){
+    event.preventDefault()
+    dropTable()
+  })
+
   $('#add-button').hide().click(function(event){
     event.preventDefault()
     addItems([$('h4')[2].innerHTML, $('h4')[4].innerHTML, $('h4')[6].innerHTML, $('h4')[8].innerHTML])
@@ -57,5 +62,15 @@ function createDB(){
     method: "GET",
     url: 'createdb.php'
   }).done(function(result){
+  })
+}
+
+function dropTable(){
+  $.ajax({
+    method: "GET",
+    url: 'droptable.php'
+  }).done(function(result){
+    createDB()
+    showItems()
   })
 }

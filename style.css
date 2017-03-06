@@ -95,3 +95,7 @@ input[type=text]:focus {
 h5 {
   font-size: 1.2em;
 }
+
+#empty-button {
+  float: right;
+}
