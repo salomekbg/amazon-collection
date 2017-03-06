@@ -7,7 +7,7 @@ $(document).ready(function() {
     addItems([$('h4')[2].innerHTML, $('h4')[4].innerHTML, $('h4')[6].innerHTML, $('h4')[8].innerHTML])
   })
 
-  $('#search').click(function(event) {
+  $('#search-button').click(function(event) {
     event.preventDefault()
     findItems($('#asin')[0].value)
   })
