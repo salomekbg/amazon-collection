@@ -1,6 +1,6 @@
 <?php
 
-require 'api_key.php';
+require 'amazon_api.php';
 
 //get keywords from form
 $keywords = $_POST['data'];
