@@ -1,5 +1,7 @@
 <?php
 
+require_once 'api_key.php';
+
 //get keywords from form
 $keywords = $_POST['data'];
 
@@ -17,10 +19,10 @@ $dbConnected = new mysqli($hostname, $username, $password, $dbName);
 
 //connect to Amazon and get data
   // Your AWS Access Key ID, as taken from the AWS Your Account page
-  $aws_access_key_id = "AKIAIOWFZ4KTTJAKNLFQ";
+  $aws_access_key_id = $access_key;
 
   // Your AWS Secret Key corresponding to the above ID, as taken from the AWS Your Account page
-  $aws_secret_key = "DL6rUpqfXpMuQEVmiGGYgudKa0ePlbaR8OX4OjHB";
+  $aws_secret_key = $secret_key;
 
   // The region you are interested in
   $endpoint = "webservices.amazon.com";
@@ -30,7 +32,7 @@ $dbConnected = new mysqli($hostname, $username, $password, $dbName);
   $params = array(
     "Service" => "AWSECommerceService",
     "Operation" => "ItemLookup",
-    "AWSAccessKeyId" => "AKIAIOWFZ4KTTJAKNLFQ",
+    "AWSAccessKeyId" => $aws_access_key_id,
     "AssociateTag" => "q0d9b-20",
     "ItemId" => $keywords,
     "IdType" => "ASIN",
@@ -98,7 +100,7 @@ $array = json_decode($json,TRUE);
   } else {
     $price = "No Price found, try checking Amazon directly.";
   }
-  
+
 //convert to json
 $arr = array('ASIN' => $asin, 'Title' => $title, 'MPN' => $mpn, 'Price' => $price);
 echo (json_encode($arr));
