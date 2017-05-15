@@ -1,5 +1,7 @@
 <?php
 
+require 'api_key.php';
+
 //get keywords from form
 $keywords = $_POST['data'];
 
