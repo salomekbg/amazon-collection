@@ -19,10 +19,10 @@ $dbConnected = new mysqli($hostname, $username, $password, $dbName);
 
 //connect to Amazon and get data
   // Your AWS Access Key ID, as taken from the AWS Your Account page
-  $aws_access_key_id = $access_key;
+  $aws_access_key_id = "AKIAIOWFZ4KTTJAKNLFQ";
 
   // Your AWS Secret Key corresponding to the above ID, as taken from the AWS Your Account page
-  $aws_secret_key = $secret_key;
+  $aws_secret_key = "DL6rUpqfXpMuQEVmiGGYgudKa0ePlbaR8OX4OjHB";
 
   // The region you are interested in
   $endpoint = "webservices.amazon.com";
@@ -32,7 +32,7 @@ $dbConnected = new mysqli($hostname, $username, $password, $dbName);
   $params = array(
     "Service" => "AWSECommerceService",
     "Operation" => "ItemLookup",
-    "AWSAccessKeyId" => $aws_access_key_id,
+    "AWSAccessKeyId" => "AKIAIOWFZ4KTTJAKNLFQ",
     "AssociateTag" => "q0d9b-20",
     "ItemId" => $keywords,
     "IdType" => "ASIN",
